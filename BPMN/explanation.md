@@ -83,14 +83,14 @@ Machine-learning can forecast:
 Likely zones of future threats
 Required resource positioning
 
-c. Sensor Performance Analytics 
-**Track:** 
+c. Sensor Performance Analytics                                                                                      
+**Track:**                    
 - Sensor reliability
 - False positives / false negatives
 - Detection time variations
 
-d. Operational Efficiency Metrics 
-**Analyze:** 
+d. Operational Efficiency Metrics                                                      
+**Analyze:**                                                                       
 - Alert issuance speed
 - Human intervention points
 - Bottlenecks in the workflow
