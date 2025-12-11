@@ -53,8 +53,7 @@ Historical tracking
 Recurrence analysis
 Evidence for post-operation reviews
 
-6. Workflow Enforcement
-
+6. Workflow Enforcement:
 Ensures procedures are followed consistently and reduces human error in high-pressure defense environments.
 
 ## Organizational Impact
@@ -93,7 +92,5 @@ c. Sensor Performance Analytics
 d. Operational Efficiency Metrics
 **Analyze:**
 - Alert issuance speed
-
-Human intervention points
-
-Bottlenecks in the workflow
+- Human intervention points
+- Bottlenecks in the workflow
