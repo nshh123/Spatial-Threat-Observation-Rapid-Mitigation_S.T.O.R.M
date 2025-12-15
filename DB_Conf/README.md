@@ -25,7 +25,7 @@ Oracle dynamically manages:
 - SGA (System Global Area) — shared memory for caching and processing          
 - PGA (Program Global Area) — memory for user sessions and query execution                            
 A fixed memory target is defined, and Oracle automatically balances memory between SGA and PGA based on workload demands.                  
-**Codes:     **                                        
+**Codes:**                                                                               
   `ALTER SYSTEM SET memory_target = 3G SCOPE=SPFILE;`                     
   `ALTER SYSTEM SET memory_max_target = 3G SCOPE=SPFILE;`                           
 > Please note defining a fixed memory target can mess with your SPFILE. Do this at your own risk
