@@ -18,7 +18,9 @@ create table zone (
    description    varchar2(4000),
   -- bounding box / polygon could be stored in SDO_GEOMETRY in Oracle Spatial; here simplified:
    boundary_info  varchar2(2000),
-   severity_level number default 1 -- 1..5 risk priority
+   severity_level number default 1, -- 1..5 risk priority
+   location_lat number(9,6),
+   location_lon number(9,6)
 );
 
 -- AIRCRAFT: known or tracked objects
@@ -79,8 +81,7 @@ create table threat_log (
    reason         varchar2(1000),
    zone_id        number
       references zone ( zone_id ),
-   handled_by     number, -- operator id
-   handled_time   timestamp,
+   zone_desc      varchar2(100),
    status         varchar2(20) default 'Open' check ( status in ( 'Open',
                                                           'Acknowledged',
                                                           'Resolved',
@@ -135,4 +136,5 @@ create index idx_threat_detection_time on
    
 -- see all created tables
 select table_name
+
   from user_tables;
