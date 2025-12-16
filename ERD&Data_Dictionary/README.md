@@ -104,6 +104,8 @@
 |             | OPERATION  | VARCHAR2(20)   | NULL             | INSERT / UPDATE / DELETE              |
 |             | RECORD_ID  | VARCHAR2(200)  | NULL             | PK value of affected row              |
 |             | MESSAGE  | VARCHAR2(2000)   | NULL             | Message about what happened           |
+|             | USER_NAME  | VARCHAR2(100)   | NULL             | User performing task          |
+
 
 ### ALL ASSUMPTIONS
 - All sequences generate unique primary keys; no manual insertion into PK columns.
