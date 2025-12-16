@@ -8,6 +8,8 @@
 |       | DESCRIPTION   | VARCHAR2(4000)  | NULL              | Details about the zone                 |
 |       | BOUNDARY_INFO | VARCHAR2(2000)  | NULL              | Simplified polygon/boundary text       |
 |       | SEVERITY_LEVEL| NUMBER          | DEFAULT 1         | Zone priority level (1–5)              |
+|       | LOCATION_LAT  | NUMBER(9,6)     | NULL              | Sensor latitude                        |
+|       | LOCATION_LON  | NUMBER(9,6)     | NULL              | Sensor longitude                       |
 
 ### 2. AIRCRAFT     
 | Table     | Column        | Type           | Constraints                                  | Purpose                           |
@@ -51,15 +53,14 @@
 | Table       | Column         | Type           | Constraints                                      | Purpose                                       |
 |-------------|----------------|----------------|--------------------------------------------------|-----------------------------------------------|
 | THREAT_LOG  | THREAT_ID      | NUMBER         | PK, NOT NULL                                     | Threat event ID                               |
-|             | SENSOR_DATA_ID | NUMBER         | FK -> SENSOR_DATA(SENSOR_DATA_ID)                | Triggering detection                           |
+|             | SENSOR_DATA_ID | NUMBER         | FK -> SENSOR_DATA(SENSOR_DATA_ID)                | Triggering detection                          |
 |             | AIRCRAFT_ID    | NUMBER         | FK -> AIRCRAFT(AIRCRAFT_ID)                      | Linked aircraft (if known)                    |
 |             | DETECTION_TIME | TIMESTAMP      | NULL                                             | Timestamp stored again for quick lookup       |
-|             | THREAT_LEVEL   | VARCHAR2(10)   | CHECK('Low','Medium','High','Critical')          | Computed threat severity                       |
+|             | THREAT_LEVEL   | VARCHAR2(10)   | CHECK('Low','Medium','High','Critical')          | Computed threat severity                      |
 |             | REASON         | VARCHAR2(1000) | NULL                                             | Why system flagged this threat                |
-|             | ZONE_ID        | NUMBER         | FK -> ZONE(ZONE_ID)                              | Zone of occurrence                             |
-|             | HANDLED_BY     | NUMBER         | FK -> OPERATORS(OPERATOR_ID)                     | Operator responding                           |
-|             | HANDLED_TIME   | TIMESTAMP      | NULL                                             | When handled                                   |
-|             | STATUS         | VARCHAR2(20)   | CHECK('Open','Acknowledged','Resolved','False Positive') DEFAULT 'Open' | Threat lifecycle |
+|             | ZONE_ID        | NUMBER         | FK -> ZONE(ZONE_ID)                              | Zone of occurrence                            |
+|             | ZONE_DESC      | VARCHAR2(100)  | NULL                                             | Zone Description                              |
+|             | STATUS         | VARCHAR2(20)   | CHECK('Open','Acknowledged','Resolved','False Positive') DEFAULT 'Open' | Threat lifecycle       |
 
 ### 6. ALERTS           
 | Table | Column         | Type           | Constraints                    | Purpose                             |
@@ -96,9 +97,11 @@
 | Table       | Column     | Type           | Constraints      | Purpose                               |
 |-------------|------------|----------------|------------------|---------------------------------------|
 | SYSTEM_LOGS | LOG_ID     | NUMBER         | PK, NOT NULL     | Unique log entry                      |
-|             | LOG_TIME   | TIMESTAMP      | DEFAULT SYSTIMESTAMP | Time of event                    |
-|             | MODULE     | VARCHAR2(100)  | NULL             | Source module/trigger name            |
-|             | MESSAGE    | VARCHAR2(2000) | NULL             | Log message                           |
+|             | LOG_TIME   | TIMESTAMP      | DEFAULT SYSTIMESTAMP | Time of event                     |
+|             | TABLE_NAME | VARCHAR2(100)  | NULL             | Affected Table                        |
+|             | OPERATION  | VARCHAR2(20)   | NULL             | INSERT / UPDATE / DELETE              |
+|             | RECORD_ID  | VARCHAR2(200)  | NULL             | PK value of affected row              |
+|             | MESSAGE  | VARCHAR2(2000)   | NULL             | Message about what happened           |
 
 ### ALL ASSUMPTIONS
 - All sequences generate unique primary keys; no manual insertion into PK columns.
