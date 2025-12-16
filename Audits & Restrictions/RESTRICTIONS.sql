@@ -35,16 +35,16 @@ DECLARE
 BEGIN
     IF is_restricted_period THEN
         IF INSERTING THEN
-           add_log('AIRCRAFT', 'INSERT', NULL, 'Blocked attempt to INSERT INTO AIRCRAFT (restricted period)');
+           add_log('AIRCRAFT', 'INSERT', NULL, 'Blocked attempt to INSERT INTO AIRCRAFT (restricted period)',user);
         ELSIF UPDATING THEN
-           add_log('AIRCRAFT', 'UPDATE', NULL, 'Blocked attempt to UPDATE AIRCRAFT (restricted period)');
+           add_log('AIRCRAFT', 'UPDATE', NULL, 'Blocked attempt to UPDATE AIRCRAFT (restricted period)',user);
         ELSIF DELETING THEN
-           add_log('AIRCRAFT', 'DELETE', NULL, 'Blocked attempt to DELETE FROM AIRCRAFT (restricted period)');
+           add_log('AIRCRAFT', 'DELETE', NULL, 'Blocked attempt to DELETE FROM AIRCRAFT (restricted period)',user);
     END IF;
         
         COMMIT;
         RAISE_APPLICATION_ERROR(-20041,
-            'AIRCRAFT cannot be modified during restricted periods.');
+            'TABLE AIRCRAFT cannot be modified during restricted periods.');
     END IF;
 END;
 /
@@ -57,16 +57,16 @@ DECLARE
 BEGIN
     IF is_restricted_period THEN
         IF INSERTING THEN
-           add_log('SENSORS', 'INSERT', NULL, 'Blocked attempt to INSERT INTO SENSORS (restricted period)');
+           add_log('SENSORS', 'INSERT', NULL, 'Blocked attempt to INSERT INTO SENSORS (restricted period)',user);
         ELSIF UPDATING THEN
-           add_log('SENSORS', 'UPDATE', NULL, 'Blocked attempt to UPDATE SENSORS (restricted period)');
+           add_log('SENSORS', 'UPDATE', NULL, 'Blocked attempt to UPDATE SENSORS (restricted period)',user);
         ELSIF DELETING THEN
-           add_log('SENSORS', 'DELETE', NULL, 'Blocked attempt to DELETE FROM SENSORS (restricted period)');
+           add_log('SENSORS', 'DELETE', NULL, 'Blocked attempt to DELETE FROM SENSORS (restricted period)',user);
     END IF;
         
         COMMIT;
         RAISE_APPLICATION_ERROR(-20041,
-            'SENSORS cannot be modified during restricted periods.');
+            'TABLE SENSORS cannot be modified during restricted periods.');
     END IF;
 END;
 /
@@ -79,16 +79,16 @@ DECLARE
 BEGIN
     IF is_restricted_period THEN
         IF INSERTING THEN
-           add_log('OPERATORS', 'INSERT', NULL, 'Blocked attempt to INSERT INTO OPERATORS (restricted period)');
+           add_log('OPERATORS', 'INSERT', NULL, 'Blocked attempt to INSERT INTO OPERATORS (restricted period)',user);
         ELSIF UPDATING THEN
-           add_log('OPERATORS', 'UPDATE', NULL, 'Blocked attempt to UPDATE OPERATORS (restricted period)');
+           add_log('OPERATORS', 'UPDATE', NULL, 'Blocked attempt to UPDATE OPERATORS (restricted period)',user);
         ELSIF DELETING THEN
-           add_log('OPERATORS', 'DELETE', NULL, 'Blocked attempt to DELETE FROM OPERATORS (restricted period)');
+           add_log('OPERATORS', 'DELETE', NULL, 'Blocked attempt to DELETE FROM OPERATORS (restricted period)',user);
     END IF;
         
         COMMIT; 
         RAISE_APPLICATION_ERROR(-20041,
-            'OPERATORS cannot be modified during restricted periods.');
+            'TABLE OPERATORS cannot be modified during restricted periods.');
     END IF;
 END;
 /
@@ -101,16 +101,16 @@ DECLARE
 BEGIN
     IF is_restricted_period THEN
         IF INSERTING THEN
-           add_log('ZONE', 'INSERT', NULL, 'Blocked attempt to INSERT INTO ZONE (restricted period)');
+           add_log('ZONE', 'INSERT', NULL, 'Blocked attempt to INSERT INTO ZONE (restricted period)',user);
         ELSIF UPDATING THEN
-           add_log('ZONE', 'UPDATE', NULL, 'Blocked attempt to UPDATE ZONE (restricted period)');
+           add_log('ZONE', 'UPDATE', NULL, 'Blocked attempt to UPDATE ZONE (restricted period)',user);
         ELSIF DELETING THEN
-           add_log('ZONE', 'DELETE', NULL, 'Blocked attempt to DELETE FROM ZONE (restricted period)');
+           add_log('ZONE', 'DELETE', NULL, 'Blocked attempt to DELETE FROM ZONE (restricted period)',user);
     END IF;
         
         COMMIT;
         RAISE_APPLICATION_ERROR(-20041,
-            'ZONE cannot be modified during restricted periods.');
+            'TABLE ZONE cannot be modified during restricted periods.');
     END IF;
 END;
 /
