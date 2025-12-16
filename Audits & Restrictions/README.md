@@ -1,4 +1,4 @@
-# Database Auditing & Restriction Scripts
+# Database Auditing & Restriction Scripts (Overview)
 
 This project contains two Oracle SQL scripts that implement **system-wide auditing** and **operational restrictions** for critical tables. Together, they provide accountability, traceability, and controlled access during sensitive periods.
 
