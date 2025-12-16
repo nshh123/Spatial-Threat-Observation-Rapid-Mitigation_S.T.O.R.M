@@ -5,7 +5,8 @@ CREATE TABLE system_logs (
     table_name  VARCHAR2(100),
     operation   VARCHAR2(20),   -- INSERT / UPDATE / DELETE
     record_id   VARCHAR2(200),  -- PK value of affected row
-    message     VARCHAR2(2000)
+    message     VARCHAR2(2000),
+    user_name   VARCHAR2(100)
 );
 
 -- Create a universal logging procedure to avoid duplicating logging code in every trigger.
@@ -154,3 +155,4 @@ BEGIN
    END IF;
 END;
 /
+
