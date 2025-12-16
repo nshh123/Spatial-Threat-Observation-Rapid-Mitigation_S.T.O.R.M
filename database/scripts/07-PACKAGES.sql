@@ -119,8 +119,10 @@ create or replace package body storm_pkg as
       p_zone_id        in number
    ) return number is
       v_threat_id number;
+      v_desc varchar2(100);
    begin
       v_threat_id := seq_threat.nextval;
+      SELECT description into v_desc from zone where zone_id = p_zone_id;
       insert into threat_log (
          threat_id,
          sensor_data_id,
@@ -129,6 +131,7 @@ create or replace package body storm_pkg as
          threat_level,
          reason,
          zone_id,
+         zone_desc,
          status
       ) values ( v_threat_id,
                  p_sensor_data_id,
@@ -137,6 +140,7 @@ create or replace package body storm_pkg as
                  p_threat_level,
                  p_reason,
                  p_zone_id,
+                 v_desc,
                  'Open' );
 
       return v_threat_id;
@@ -217,8 +221,8 @@ end;
         into v_zone_id
         from zone
        where 
-        p_lat between - 1.958 and - 1.948
-      and p_lon between 30.055 and 30.075
+        p_lat = location_lat
+      and p_lon = location_lon
        fetch first row only;
       return v_zone_id;
    exception
@@ -246,4 +250,5 @@ end;
 
 
 end storm_pkg;
+
 /
