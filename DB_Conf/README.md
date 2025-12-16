@@ -18,7 +18,6 @@ A fixed memory target is defined, and Oracle automatically balances memory betwe
 > Please note defining a fixed memory target can mess with your SPFILE. Do this at your own risk
 
 ## Tablespace Architecture
-*[see Tablespace_creation_scripts](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/blob/main/DB_Conf/01-Tablespace_conf.sql)*                              
 To improve performance, manageability, and scalability, the database schema is organized using **separate tablespaces**:
 - `STORM_DATA`
   Stores all application tables (e.g. ZONE, AIRCRAFT, SENSOR_DATA, THREAT_LOG, ALERTS).     
@@ -30,5 +29,6 @@ To improve performance, manageability, and scalability, the database schema is o
   Temporary tablespace used for:        
   Normally used for Sorting operations, Hash joins, Group-by operations and Temporary segments          
   This tablespace is automatically used by Oracle during query execution.
+- *[see Tablespace_creation_scripts](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/blob/main/DB_Conf/01-Tablespace_conf.sql)*                              
        
 > All tables and indexes were moved into their respective tablespaces after creation, ensuring a clean and production-like layout.
