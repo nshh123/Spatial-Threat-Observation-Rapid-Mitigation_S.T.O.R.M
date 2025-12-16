@@ -61,7 +61,7 @@ declare
 begin
     v_message := 'Threat detected. Level: ' || :new.threat_level;
 
-    if :new.threat_level in ('Medium','High','Critical') then
+    if :new.threat_level in ('Medium','Critical') then
         storm_pkg.send_internal_alert(
             p_threat_id       => :new.threat_id,
             p_alert_level     => :new.threat_level,
@@ -107,3 +107,4 @@ begin
     end if;
 end;
 /
+
