@@ -1,6 +1,7 @@
 # BPMN Overview (Process Explanation)
 
-The BPMN diagram models the STORM air-threat detection and alerting workflow, starting from the moment air-defense sensors detect an aircraft to the point where alerts are issued, logged, and escalated. The process guarantees that all incoming sensor information is classified, threats are verified, logs are created, and both military and public authorities receive the correct level of notification.
+The BPMN diagram models the STORM air-threat detection and alerting workflow, starting from the moment air-defense sensors detect an aircraft to the point where alerts are issued, logged, and escalated. The process guarantees that all incoming sensor information is classified, threats are verified, logs are created, and both military and public authorities receive the correct level of notification.      
+- [see BPMN_Diagram](/BPMN/STORM.svg)
 
 ## Main Components
 1. Sensor Layer
