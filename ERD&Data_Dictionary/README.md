@@ -1,3 +1,5 @@
+# ERD (Entity Relationship Diagram)
+[*see ERD_Diagram*](ERD&Data_Dictionary/stormERD.png)
 # Data_Dictionary
 ## *All Table names, columns, data types, Constraints and Assumptions clearly listed*
 ### 1. ZONE       
