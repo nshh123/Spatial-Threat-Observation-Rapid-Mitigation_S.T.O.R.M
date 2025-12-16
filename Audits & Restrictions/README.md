@@ -2,7 +2,9 @@
 
 This project contains two Oracle SQL scripts that implement **system-wide auditing** and **operational restrictions** for critical tables. Together, they provide accountability, traceability, and controlled access during sensitive periods.
 
----
+- [see audit_scripts](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/blob/main/Audits%20%26%20Restrictions/AUDIT.sql)
+- [see restriction_scripts](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/blob/main/Audits%20%26%20Restrictions/RESTRICTIONS.sql)
+- [see screenshots](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/tree/main/Audits%20%26%20Restrictions/screenshots)
 
 ## Files Overview
 
