@@ -1,5 +1,5 @@
 # ERD (Entity Relationship Diagram)
-*[see ERD_Diagram](ERD&Data_Dictionary/stormERD.png)*
+*[see ERD_Diagram](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/blob/main/ERD%26Data_Dictionary/stormERD.png)*
 # Data_Dictionary
 ## *All Table names, columns, data types, Constraints and Assumptions clearly listed*
 ### 1. ZONE       
