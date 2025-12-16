@@ -85,4 +85,4 @@ Each major component of the project has its own `README.md` for detailed documen
 - **Window Functions**
 - **Git & GitHub** for version control
 
-
+> All Implementations and analyses represent original work. No AI generated content was copied without attribution or adaptation.
