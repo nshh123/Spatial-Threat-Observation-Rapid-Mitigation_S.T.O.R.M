@@ -1,5 +1,9 @@
 # Project Structure Overview
 When a sensor (such as radar, ADS-B receiver, or optical device) detects an aerial object, it inserts a new record into the sensor_data table. This insertion acts as the main trigger point for the entire automated threat detection workflow in the system. From this point, the process is fully automated using PL/SQL triggers and package procedures.
+- *[see configuration_scripts](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/blob/main/DB_Conf/01-Tablespace_conf.sql)*
+- *[see configuration_sceenshots](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/tree/main/DB_Conf/Tablespace_conf_screenshots)*
+- *[see project_scripts](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/tree/main/database/scripts)*
+- *[see project_sceenshots](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/tree/main/database/screenshots)*
 
 ## Step 1: Sensor Data Insertion
 A physical or simulated sensor captures flight-related information such as:     
