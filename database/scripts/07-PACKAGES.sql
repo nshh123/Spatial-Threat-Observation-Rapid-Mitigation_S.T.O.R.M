@@ -242,8 +242,8 @@ end;
        DELETE FROM system_logs
        WHERE log_time < SYSTIMESTAMP - INTERVAL '60' DAY;
 
-       INSERT INTO system_logs (table_name, message)
-       VALUES ('system_logs', 'Old data cleanup completed successfully');
+       INSERT INTO system_logs (table_name, message, user_name)
+       VALUES ('SENSOR_DATA, THREAT_LOG AND SYSTEM_LOGS', 'Old data cleanup completed successfully','SYSTEM');
        
        commit;
     end cleanup_old_data;
@@ -252,3 +252,4 @@ end;
 end storm_pkg;
 
 /
+
