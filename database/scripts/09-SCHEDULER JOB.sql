@@ -1,9 +1,9 @@
--- Create a Scheduler Job to run procedure cleanup_old_data automatically (runs every day at 2 AM)
+-- Create a Scheduler Job to run procedure cleanup_old_data automatically (runs every 1st of the Month at 2 AM)
 BEGIN
    DBMS_SCHEDULER.create_job (
       job_name        => 'JOB_CLEANUP_OLD_DATA',
       job_type        => 'STORED_PROCEDURE',
-      job_action      => 'CLEANUP_OLD_DATA',
+      job_action      => 'STORM_PKG.CLEANUP_OLD_DATA',
       start_date      => SYSTIMESTAMP,
       repeat_interval => 'FREQ=MONTHLY;BYHOUR=2;BYMINUTE=0;BYSECOND=0',
       enabled         => TRUE,
@@ -36,3 +36,4 @@ SELECT job_name
 FROM user_scheduler_jobs
 
 WHERE job_name = 'JOB_CLEANUP_OLD_DATA';
+
