@@ -5,8 +5,7 @@ CREATE TABLE system_logs (
     table_name  VARCHAR2(100),
     operation   VARCHAR2(20),   -- INSERT / UPDATE / DELETE
     record_id   VARCHAR2(200),  -- PK value of affected row
-    message     VARCHAR2(2000),
-    user_name   VARCHAR2(100)
+    message     VARCHAR2(2000)
 );
 
 -- Create a universal logging procedure to avoid duplicating logging code in every trigger.
@@ -43,11 +42,11 @@ AFTER INSERT OR UPDATE OR DELETE ON threat_log
 FOR EACH ROW
 BEGIN
     IF INSERTING THEN
-        add_log('THREAT_LOG', 'INSERT', :new.threat_id, 'Threat created',user);
+        add_log('THREAT_LOG', 'INSERT', :new.threat_id, 'Threat created','SYSTEM');
     ELSIF UPDATING THEN
-        add_log('THREAT_LOG', 'UPDATE', :new.threat_id, 'Threat updated',user);
+        add_log('THREAT_LOG', 'UPDATE', :new.threat_id, 'Threat updated','SYSTEM');
     ELSIF DELETING THEN
-        add_log('THREAT_LOG', 'DELETE', :old.threat_id, 'Threat removed',user);
+        add_log('THREAT_LOG', 'DELETE', :old.threat_id, 'Threat removed','SYSTEM');
     END IF;
 END;
 /
@@ -57,11 +56,11 @@ AFTER INSERT OR UPDATE OR DELETE ON alerts
 FOR EACH ROW
 BEGIN
     IF INSERTING THEN
-        add_log('ALERTS', 'INSERT', :new.alert_id, 'New internal alert issued',user);
+        add_log('ALERTS', 'INSERT', :new.alert_id, 'New internal alert issued','SYSTEM');
     ELSIF UPDATING THEN
-        add_log('ALERTS', 'UPDATE', :new.alert_id, 'Alert updated',user);
+        add_log('ALERTS', 'UPDATE', :new.alert_id, 'Alert updated','SYSTEM');
     ELSIF DELETING THEN
-        add_log('ALERTS', 'DELETE', :old.alert_id, 'Alert deleted',user);
+        add_log('ALERTS', 'DELETE', :old.alert_id, 'Alert deleted','SYSTEM');
     END IF;
 END;
 /
@@ -71,11 +70,11 @@ AFTER INSERT OR UPDATE OR DELETE ON public_alerts
 FOR EACH ROW
 BEGIN
     IF INSERTING THEN
-        add_log('PUBLIC_ALERTS', 'INSERT', :new.public_alert_id, 'Public alert broadcasted',user);
+        add_log('PUBLIC_ALERTS', 'INSERT', :new.public_alert_id, 'Public alert broadcasted','SYSTEM');
     ELSIF UPDATING THEN
-        add_log('PUBLIC_ALERTS', 'UPDATE', :new.public_alert_id, 'Public alert updated',user);
+        add_log('PUBLIC_ALERTS', 'UPDATE', :new.public_alert_id, 'Public alert updated','SYSTEM');
     ELSIF DELETING THEN
-        add_log('PUBLIC_ALERTS', 'DELETE', :old.public_alert_id, 'Public alert deleted',user);
+        add_log('PUBLIC_ALERTS', 'DELETE', :old.public_alert_id, 'Public alert deleted','SYSTEM');
     END IF;
 END;
 /
@@ -155,4 +154,3 @@ BEGIN
    END IF;
 END;
 /
-
