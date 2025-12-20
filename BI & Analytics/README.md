@@ -1,11 +1,11 @@
-## Business Intelligence (BI) Considerations
+# Business Intelligence (BI) Considerations
 
 The STORM database is designed to support **operational reporting, analytics, and future data-warehouse integration**. Key BI considerations include fact/dimension separation, handling of changing reference data, aggregation strategies, and auditability.
 
-*see [sample_dashboard](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/blob/main/BI%20%26%20Analytics/sample_dashboard.png)*
+see [sample_dashboard](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/blob/main/BI%20%26%20Analytics/sample_dashboard.png)
 ---
 
-### Fact vs. Dimension Tables
+## Fact vs. Dimension Tables
 
 For BI and analytical workloads, the schema can be logically mapped into **fact tables** and **dimension tables**.
 
@@ -37,7 +37,7 @@ This separation supports **star-schema–style analytics** without modifying the
 
 ---
 
-### Slowly Changing Dimensions (SCD)
+## Slowly Changing Dimensions (SCD)
 
 Some dimension attributes change over time and must be handled correctly to preserve historical accuracy.
 
@@ -57,7 +57,7 @@ The operational database stores only the current state; historical tracking is h
 
 ---
 
-### Aggregation Levels
+## Aggregation Levels
 
 To support efficient dashboards and analytical queries, data can be aggregated at multiple levels:
 
@@ -79,7 +79,7 @@ Aggregations may be generated dynamically in BI tools or materialized for perfor
 
 ---
 
-### Audit Trail Design
+## Audit Trail Design
 
 Auditability is critical for security, compliance, and post-incident analysis.
 
