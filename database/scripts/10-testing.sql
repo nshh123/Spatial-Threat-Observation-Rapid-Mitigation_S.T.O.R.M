@@ -275,3 +275,31 @@ WHERE threat_id IN (
     WHERE threat_level = 'Critical'
 );
 
+-- ========================================================================================================================================================================================================================
+
+-- Test Foreign Keys: Expected: ORA-02291 (parent key not found)
+INSERT INTO sensor_data (
+    sensor_data_id,
+    sensor_id,
+    obj_callsign,
+    obj_id,
+    location_lat,
+    location_lon,
+    altitude_ft,
+    speed_kt,
+    heading_deg,
+    transponder_on,
+    raw_info
+) VALUES (
+    seq_sensor.nextval,
+    9999,
+    'RW123',
+    1038,
+    -1.968628,
+    30.139504,
+    12000,
+    450,
+    180,
+    'Y',
+    'Routine commercial flight'
+);
