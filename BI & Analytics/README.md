@@ -3,7 +3,6 @@
 The STORM database is designed to support **operational reporting, analytics, and future data-warehouse integration**. Key BI considerations include fact/dimension separation, handling of changing reference data, aggregation strategies, and auditability.
 
 see [sample_dashboard](https://github.com/nshh123/Spatial-Threat-Observation-Rapid-Mitigation_S.T.O.R.M/blob/main/BI%20%26%20Analytics/sample_dashboard.png)
----
 
 ## Fact vs. Dimension Tables
 
