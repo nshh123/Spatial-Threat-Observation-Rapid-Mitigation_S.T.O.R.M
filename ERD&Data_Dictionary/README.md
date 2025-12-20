@@ -125,7 +125,119 @@ The STORM database schema was designed using relational normalization principles
 - `2NF`: No Partial Dependencies. (All non-key attributes depend on the entire primary key, not just part of it, for each Table)
 - `3NF`: No Transitive Dependencies. (No Non-key attributes depend on other non-key attributes)
 
+## Business Intelligence (BI) Considerations
 
+The STORM database is designed to support **operational reporting, analytics, and future data-warehouse integration**. Key BI considerations include fact/dimension separation, handling of changing reference data, aggregation strategies, and auditability.
+
+---
+
+### Fact vs. Dimension Tables
+
+For BI and analytical workloads, the schema can be logically mapped into **fact tables** and **dimension tables**.
+
+#### Fact Tables (Transactional, High Volume)
+Fact tables capture measurable events and are the primary source for analytics:
+
+- **`SENSOR_DATA`**  
+  Represents individual detection events (time, location, altitude, speed).  
+  Used for metrics such as detection counts, airspace activity, and trend analysis.
+
+- **`THREAT_LOG`**  
+  Represents classified threat events.  
+  Supports analysis of threat frequency, severity distribution, and response times.
+
+- **`ALERTS` / `PUBLIC_ALERTS`**  
+  Represent alert dissemination events.  
+  Enable analysis of alert volume, delivery success, and escalation patterns.
+
+#### Dimension Tables (Descriptive, Low Volatility)
+Dimension tables provide contextual information for fact tables:
+
+- **`AIRCRAFT`** – aircraft identity and characteristics  
+- **`SENSORS`** – sensor type, location, and installation details  
+- **`ZONE`** – monitored or restricted airspace regions  
+- **`OPERATORS`** – personnel handling threat events  
+- **Time dimension** (derived from timestamps) – date, hour, day, month, year  
+
+This separation supports **star-schema–style analytics** without modifying the transactional schema.
+
+---
+
+### Slowly Changing Dimensions (SCD)
+
+Some dimension attributes change over time and must be handled correctly to preserve historical accuracy.
+
+#### Slowly Changing Dimension Candidates
+- Aircraft status changes (Normal → Suspicious → Hostile)
+- Zone severity level updates
+- Operator role changes
+- Sensor relocation or upgrades
+
+#### Planned SCD Approach
+- **SCD Type 2** is recommended for BI:
+  - Maintain historical versions of dimension records
+  - Add `effective_from`, `effective_to`, and `is_current` attributes
+  - Preserve historical context for reporting
+
+The operational database stores only the current state; historical tracking is handled in the BI or warehouse layer.
+
+---
+
+### Aggregation Levels
+
+To support efficient dashboards and analytical queries, data can be aggregated at multiple levels:
+
+#### Time-Based Aggregations
+- Hourly threat counts  
+- Daily alert volumes  
+- Monthly airspace activity trends  
+
+#### Spatial Aggregations
+- Threats per zone  
+- Detections per sensor  
+- Incidents by geographic region  
+
+#### Severity-Based Aggregations
+- Threat counts by level (Low, Medium, High, Critical)  
+- Escalation ratios (internal vs. public alerts)  
+
+Aggregations may be generated dynamically in BI tools or materialized for performance optimization.
+
+---
+
+### Audit Trail Design
+
+Auditability is critical for security, compliance, and post-incident analysis.
+
+#### Existing Audit Mechanisms
+- **`THREAT_LOG`** records:
+  - Detection timestamps
+  - Threat classifications
+  - Handling operators
+  - Resolution statuses
+- **`ALERTS`** and **`PUBLIC_ALERTS`** record:
+  - Alert issuance times
+  - Recipient groups
+  - Delivery status
+
+#### Extended Audit Strategy
+- Maintain immutable historical records
+- Track who handled each threat and when actions occurred
+- Enable database-level archive logging for recovery and traceability
+
+This approach supports accountability, compliance reviews, and forensic investigations.
+
+---
+
+### BI Readiness Summary
+
+| BI Aspect | Description |
+|--------|-------------|
+| Fact Tables | Sensor data, threats, alerts |
+| Dimension Tables | Aircraft, sensors, zones, operators, time |
+| Slowly Changing Dimensions | Planned (Type 2) |
+| Aggregation Levels | Time, location, severity |
+| Audit Trails | Threat & alert logs + archive logging |
 
 
 
