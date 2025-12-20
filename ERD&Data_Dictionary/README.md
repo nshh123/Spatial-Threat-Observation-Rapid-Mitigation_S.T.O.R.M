@@ -117,8 +117,13 @@
 - Lookup validation (like sensor_type, threat_level) is handled using CHECK constraints.
 - Operator authentication is handled outside this schema.
 
+### Database Normalization
+The STORM database schema was designed using relational normalization principles to reduce redundancy, ensure data integrity, and support reliable analytics and transaction processing. The design conforms to **Third Normal Form (3NF)**.
 
-
+#### CHECKLIST:
+- `1NF`: No Repeating Groups in any Tables.
+- `2NF`: No Partial Dependencies. (All non-key attributes depend on the entire primary key, not just part of it, for each Table)
+- `3NF`: No Transitive Dependencies. (No Non-key attributes depend on other non-key attributes)
 
 
 
